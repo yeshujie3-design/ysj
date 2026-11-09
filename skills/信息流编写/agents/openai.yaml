@@ -1,0 +1,4 @@
+interface:
+  display_name: "信息流编写"
+  short_description: "为本地服务品牌采集需求、整理 brief、批量编写信息流获客脚本并自检"
+  default_prompt: "使用 $信息流编写，按客户资料编写信息流获客文案。"
