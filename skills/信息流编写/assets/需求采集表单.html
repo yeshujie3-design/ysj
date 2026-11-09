@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>信息流文案通用模板 · 需求采集表单</title>
+<style>
+:root{--ink:#1f2d2a;--ink2:#4a5a56;--ink3:#7b8782;--line:#dfe5e0;--bg:#f6f5f1;--card:#fff;--brand:#1f4e45;--brand2:#e9f1ed;--warm:#c8763c;--warm2:#fbf1e8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:13.5px;line-height:1.65}
+.wrap{max-width:960px;margin:0 auto;padding:30px 20px 70px}
+header{border-bottom:3px solid var(--brand);padding-bottom:16px;margin-bottom:18px}
+h1{font-size:23px;margin:0 0 6px}
+.sub{color:var(--ink2);font-size:12.5px}
+.steps{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}
+.step{flex:1;min-width:200px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:11px 14px;font-size:12.5px;color:var(--ink2)}
+.step b{display:block;color:var(--brand);font-size:13px;margin-bottom:3px}
+.step .n{display:inline-block;background:var(--brand);color:#fff;border-radius:50%;width:19px;height:19px;line-height:19px;text-align:center;font-size:11px;margin-right:6px}
+h2{font-size:15px;margin:22px 0 9px;padding-left:10px;border-left:4px solid var(--brand)}
+fieldset{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px 17px;margin:0 0 14px}
+legend{font-size:13px;font-weight:600;color:var(--brand);padding:0 7px}
+.row{display:grid;grid-template-columns:repeat(2,1fr);gap:11px 14px}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px 14px}
+.field{display:flex;flex-direction:column;gap:4px}
+.field.full{grid-column:1/-1}
+label{font-size:12px;color:var(--ink2);font-weight:600}
+input[type=text],textarea,select{border:1px solid var(--line);border-radius:7px;padding:8px 10px;font-size:13px;font-family:inherit;color:var(--ink);background:#fff;width:100%}
+textarea{resize:vertical;min-height:56px}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--brand2);border-color:var(--brand)}
+.hint{font-size:11px;color:var(--ink3)}
+.checks{display:flex;flex-wrap:wrap;gap:8px 14px}
+.checks label{display:flex;align-items:center;gap:5px;font-weight:400;font-size:12.5px;color:var(--ink)}
+input[type=checkbox]{accent-color:var(--brand);width:15px;height:15px}
+.scene{border:1px solid var(--line);border-radius:8px;padding:12px 13px;margin-top:10px;background:#fbfcfb}
+.scene .st{font-size:12px;font-weight:600;color:var(--warm);margin-bottom:8px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+button{border:0;border-radius:7px;padding:9px 18px;font-size:13px;cursor:pointer;font-family:inherit}
+.primary{background:var(--brand);color:#fff}
+.ghost{background:#fff;border:1px solid var(--line);color:var(--ink2)}
+.warnb{background:var(--warm2);border:1px solid #e8c9ab;color:#8a4d1c}
+.out{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-top:14px}
+.out h2{border:0;padding:0;margin:0 0 8px}
+#briefOut{white-space:pre-wrap;font-size:12.5px;line-height:1.7;color:var(--ink);background:#fbfcfb;border:1px solid var(--line);border-radius:8px;padding:14px 16px;max-height:520px;overflow:auto;display:none}
+.note{background:var(--warm2);border-left:3px solid var(--warm);border-radius:0 8px 8px 0;padding:10px 14px;margin:12px 0;font-size:12.5px;color:#6b4423}
+.foot{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);color:var(--ink3);font-size:12px}
+@media print{body{background:#fff}.wrap{max-width:none;padding:0}.btnrow,.steps{display:none}fieldset,.out{break-inside:avoid}#briefOut{display:block;max-height:none}}
+@media(max-width:680px){.row,.row3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<h1>信息流文案通用模板 · 需求采集表单</h1>
+<div class="sub">换一家全屋定制 / 换个行业，填这份表单 → 一键生成可给 AI 批量产文案的 brief　|　公开版为空白表单，请填写客户真实资料</div>
+</header>
+
+<div class="steps">
+<div class="step"><b><span class="n">1</span>填表单</b>把品牌、卖点、场景、转化动作填进去（请填写实际资料）</div>
+<div class="step"><b><span class="n">2</span>生成 brief</b>点「生成」，自动套入通用模板要求，得到一份完整需求文档</div>
+<div class="step"><b><span class="n">3</span>发给 AI</b>复制 brief 贴给我，我按它批量产出脚本（开头＋中间＋结尾）</div>
+</div>
+
+<form id="f" onsubmit="return false">
+
+<h2>① 品牌与主体</h2>
+<fieldset><legend>品牌信息</legend>
+<div class="row3">
+<div class="field"><label>品牌名</label><input type="text" id="brand" value=""></div>
+<div class="field"><label>城市 / 区域</label><input type="text" id="city" value=""></div>
+<div class="field"><label>经营品类</label><input type="text" id="cat" value=""></div>
+</div>
+<div class="row">
+<div class="field"><label>成立年限</label><input type="text" id="years" value=""></div>
+<div class="field"><label>目标客户</label><input type="text" id="target" value=""></div>
+</div>
+</fieldset>
+
+<h2>② 出镜人（IP）</h2>
+<fieldset><legend>出镜人</legend>
+<div class="row3">
+<div class="field"><label>称呼</label><input type="text" id="pname" value=""></div>
+<div class="field"><label>性别 / 年龄</label><input type="text" id="page" value=""></div>
+<div class="field"><label>身份</label><input type="text" id="prole" value=""></div>
+</div>
+<div class="field"><label>从业年限 / 一句话经历</label><input type="text" id="pexp" value=""></div>
+</fieldset>
+
+<h2>③ 实力背书（品牌 / 产品卖点）</h2>
+<fieldset><legend>实力素材（只用这些，不现编）</legend>
+<div class="field full"><label>工厂情况</label><input type="text" id="factory" value=""></div>
+<div class="field full"><label>自有流程环节（多选）</label>
+<div class="checks">
+<label><input type="checkbox" name="flow" value="量尺">量尺</label>
+<label><input type="checkbox" name="flow" value="设计">设计</label>
+<label><input type="checkbox" name="flow" value="生产">生产</label>
+<label><input type="checkbox" name="flow" value="运输">运输</label>
+<label><input type="checkbox" name="flow" value="安装">安装</label>
+<label><input type="checkbox" name="flow" value="售后">售后</label>
+</div></div>
+<div class="row">
+<div class="field"><label>展厅</label><input type="text" id="showroom" value=""></div>
+<div class="field"><label>产品范围</label><input type="text" id="products" value=""></div>
+</div>
+<div class="field full"><label>板材品牌</label><input type="text" id="boards" value=""></div>
+<div class="field full"><label>资质 / 认证</label><input type="text" id="certs" value=""></div>
+</fieldset>
+
+<h2>④ 引流款（可选）</h2>
+<fieldset><legend>引流款 / 价格口径</legend>
+<div class="row3">
+<div class="field"><label>引流款价格</label><input type="text" id="price" value=""></div>
+<div class="field"><label>计价单位</label><input type="text" id="priceunit" value=""></div>
+<div class="field"><label>口播口径</label><input type="text" id="pricecall" value=""></div>
+</div>
+<div class="field full"><label>引流款配置</label><input type="text" id="pkg" value=""></div>
+</fieldset>
+
+<h2>⑤ 钩子痛点（多选）</h2>
+<fieldset><legend>痛点池</legend>
+<div class="checks">
+<label><input type="checkbox" name="pain" value="怕买贵了">怕买贵了</label>
+<label><input type="checkbox" name="pain" value="怕质量没保障">怕质量没保障</label>
+<label><input type="checkbox" name="pain" value="怕设计不好看">怕设计不好看</label>
+<label><input type="checkbox" name="pain" value="怕售后没保障">怕售后没保障</label>
+</div>
+<div class="hint" style="margin-top:6px">每条钩子只戳一个痛点，别贪多。</div>
+</fieldset>
+
+<h2>⑥ 三场景映射（痛点 → 拍摄地 → 结尾动作）</h2>
+<fieldset><legend>场景映射</legend>
+<div class="scene"><div class="st">场景一 · 在意价格</div>
+<div class="row3">
+<div class="field"><label>拍摄地</label><input type="text" id="s1place" value=""></div>
+<div class="field"><label>结尾动作 1</label><input type="text" id="s1a" value=""></div>
+<div class="field"><label>结尾动作 2</label><input type="text" id="s1b" value=""></div>
+</div></div>
+<div class="scene"><div class="st">场景二 · 在意售后 / 品质</div>
+<div class="row3">
+<div class="field"><label>拍摄地</label><input type="text" id="s2place" value=""></div>
+<div class="field"><label>结尾动作 1</label><input type="text" id="s2a" value=""></div>
+<div class="field"><label>结尾动作 2</label><input type="text" id="s2b" value=""></div>
+</div></div>
+<div class="scene"><div class="st">场景三 · 在意颜值 / 落地效果</div>
+<div class="row3">
+<div class="field"><label>拍摄地</label><input type="text" id="s3place" value=""></div>
+<div class="field"><label>结尾动作 1</label><input type="text" id="s3a" value=""></div>
+<div class="field"><label>结尾动作 2</label><input type="text" id="s3b" value=""></div>
+</div></div>
+</fieldset>
+
+<h2>⑦ 转化与投放</h2>
+<fieldset><legend>转化与投放</legend>
+<div class="row3">
+<div class="field"><label>落地动作</label><input type="text" id="cta" value=""></div>
+<div class="field"><label>目标线索成本</label><input type="text" id="cost" value=""></div>
+<div class="field"><label>预算 / 周期</label><input type="text" id="budget" value=""></div>
+</div>
+</fieldset>
+
+<div class="btnrow">
+<button type="button" class="primary" id="gen">生成 brief</button>
+<button type="button" class="ghost" id="example">恢复空白表单</button>
+<button type="button" class="ghost" id="clear">清空重填</button>
+<button type="button" class="warnb" id="save">暂存到本机</button>
+</div>
+
+</form>
+
+<div class="out">
+<h2>生成的 brief（复制后发给 AI）</h2>
+<div class="note">下方即生成结果，包含您填的品牌信息＋通用模板要求（三段式、调性、合规红线、拍摄配合）。</div>
+<div id="briefOut"></div>
+<div class="btnrow"><button type="button" class="primary" id="copy" style="display:none">复制 brief</button></div>
+</div>
+
+<div class="foot">通用模板要求为固定段落，不随品牌变化；只需改上面表单，即可为任意一家全屋定制 / 本地行业生成 brief。表单可暂存本机，下次打开自动带出。</div>
+
+</div>
+<script>
+var $=function(id){return document.getElementById(id)};
+function vals(name){return Array.prototype.slice.call(document.querySelectorAll('input[name='+name+']:checked')).map(function(i){return i.value}).join('、')||'（未选）'}
+function build(){
+  var t=[];
+  t.push('信息流文案批量产出 · 需求 brief');
+  t.push('');
+  t.push('【一句话公式】'+$('city').value+'业主痛点钩子（前3秒）→ '+$('pname').value+'口语讲3-4个实力点（中间）→ 私信留资（结尾）');
+  t.push('');
+  t.push('【品牌与主体】品牌：'+$('brand').value+'；城市/区域：'+$('city').value+'；品类：'+$('cat').value+'；成立年限：'+$('years').value+'；目标客户：'+$('target').value+'。文案里点名品牌。');
+  t.push('');
+  t.push('【出镜人 IP】'+$('pname').value+'，'+$('page').value+'，'+$('prole').value+'；'+$('pexp').value+'。第一人称口语，自称自然带出不硬塞，用资历与在地感建立信任，不靠形容词自夸。');
+  t.push('');
+  t.push('【实力点素材库（只用这些，不现编）】');
+  t.push('品牌背书：'+$('years').value+'专做'+$('cat').value+'；'+$('factory').value+'；'+vals('flow')+'全流程自有团队；'+$('showroom').value+'；'+$('pname').value+'（'+$('pexp').value.replace(/品牌/g,$('brand').value)+'）；样板间落地案例。');
+  t.push('产品卖点：'+$('products').value+'；板材品牌：'+$('boards').value+'；资质：'+$('certs').value+'；引流款：'+$('price').value+$('priceunit').value+'（'+$('pkg').value+'）。');
+  t.push('');
+  t.push('【钩子痛点池】'+vals('pain')+'。每条钩子只戳一个，别贪多。');
+  t.push('');
+  t.push('【三场景映射（痛点→拍摄地→结尾动作）】');
+  t.push('在意价格 → '+$('s1place').value+' → '+$('s1a').value+'；'+$('s1b').value);
+  t.push('在意售后/品质 → '+$('s2place').value+' → '+$('s2a').value+'；'+$('s2b').value);
+  t.push('在意颜值/落地效果 → '+$('s3place').value+' → '+$('s3a').value+'；'+$('s3b').value);
+  t.push('');
+  t.push('【转化与投放】落地动作：'+$('cta').value+'；目标线索成本：'+$('cost').value+'；预算/周期：'+$('budget').value+'。');
+  t.push('');
+  t.push('【三段式结构】开头 0-3秒：点名「'+$('city').value+'＋装修业主」人群＋戳一个痛点，一句说完；中间 22-35秒：完整叙述、不精简，含3-4个实力点（品牌背书+产品卖点），末句引到结尾动作；结尾 3-5秒：只说站内「私信＋关键词」，动作按场景对应。');
+  t.push('');
+  t.push('【调性要求】活人感（说实话/我跟你说/这事我见太多了/跑不了这类口气），不机械、不套「'+$('city').value+'XX的业主，怕XX？」的统一模板，每条句式错开；小白能听懂又显专业——把工艺讲成人话（封边＝摸上去平不平，导轨＝推起来晃不晃，收口＝贴墙那道缝齐不齐），专业名词点到为止。');
+  t.push('');
+  t.push('【合规红线】');
+  t.push('· 不用极限词/绝对化：最、第一、唯一、首选、100%、全网、绝对、顶级。');
+  t.push('· 价格只说「工厂价 / 按配置拆开 / '+$('pricecall').value+'」；不承诺具体金额、不说最低价。');
+  t.push('· 环保只说认证与「检测报告可查」；不说零甲醛 / 无醛 / 绝对环保。');
+  t.push('· 服务只讲流程动作（量尺复尺、一套自己人、留记录）；不说终身保修 / 包满意 / 保证不返工 / 无效退款。');
+  t.push('· 只站内「私信＋关键词」；不出现加微信 / 留电话 / 扫码 / 点击下方链接。');
+  t.push('· 「免费」按需求保留，卡审时换「领一份 / 安排 / 升级不加钱」。');
+  t.push('· 数字、年限、品牌名、认证要有凭据且与画面一致；无凭据的数量不上字幕。');
+  t.push('');
+  t.push('【拍摄配合】一句一个画面，别一口气赶完；凡提「源头工厂 / 工厂价」，3秒内切厂区或产线实拍；报价单、板材、授权书、封边、导轨、样板间、案例图册都要有「手在动」的镜头；客户户型图、报价单、屏幕信息一律打码。');
+  t.push('');
+  t.push('请按以上 brief，批量产出脚本（开头钩子＋中间买点阐述＋结尾私信引导），按三场景分组，每条可直接拍摄。');
+  return t.join('\n');
+}
+$('gen').addEventListener('click',function(){
+  var o=$('briefOut'); o.textContent=build(); o.style.display='block'; $('copy').style.display='inline-block'; o.scrollIntoView({behavior:'smooth',block:'start'});
+});
+$('copy').addEventListener('click',function(){
+  var t=$('briefOut').textContent,b=this;
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){b.textContent='已复制';setTimeout(function(){b.textContent='复制 brief';},1600);});}
+  else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);b.textContent='已复制';setTimeout(function(){b.textContent='复制 brief';},1600);}
+});
+function collect(){var d={};['brand','city','cat','years','target','pname','page','prole','pexp','factory','showroom','products','boards','certs','price','priceunit','pricecall','pkg','cta','cost','budget','s1place','s1a','s1b','s2place','s2a','s2b','s3place','s3a','s3b'].forEach(function(id){d[id]=$(id).value});d.flow=[];document.querySelectorAll('input[name=flow]:checked').forEach(function(i){d.flow.push(i.value)});d.pain=[];document.querySelectorAll('input[name=pain]:checked').forEach(function(i){d.pain.push(i.value)});return d}
+function apply(d){Object.keys(d).forEach(function(k){if(k==='flow'||k==='pain')return;var e=$(k);if(e)e.value=d[k]});document.querySelectorAll('input[name=flow]').forEach(function(i){i.checked=d.flow&&d.flow.indexOf(i.value)>-1});document.querySelectorAll('input[name=pain]').forEach(function(i){i.checked=d.pain&&d.pain.indexOf(i.value)>-1})}
+var EXAMPLE=collect();
+$('save').addEventListener('click',function(){try{localStorage.setItem('infoflowBlankBriefForm',JSON.stringify(collect()));this.textContent='已暂存';var b=this;setTimeout(function(){b.textContent='暂存到本机';},1500);}catch(e){alert('暂存失败')}});
+$('example').addEventListener('click',function(){apply(EXAMPLE)});
+$('clear').addEventListener('click',function(){var d={};Object.keys(EXAMPLE).forEach(function(k){d[k]=''});d.flow=[];d.pain=[];apply(d)});
+try{var sv=localStorage.getItem('infoflowBlankBriefForm');if(sv){apply(JSON.parse(sv))}}catch(e){}
+</script>
+</body>
+</html>
